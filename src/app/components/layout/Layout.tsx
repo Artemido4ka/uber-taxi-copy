@@ -17,7 +17,7 @@ const Layout: FC<TLayout> = ({ children, title }) => {
     setIsLoading(true);
     const timeout = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 1000);
 
     return () => clearTimeout(timeout);
   }, []);
@@ -30,7 +30,10 @@ const Layout: FC<TLayout> = ({ children, title }) => {
         <link rel="icon" href={FavIcon.src} type="image/svg" />
       </Head>
 
-      {/* <Script strategy="beforeInteractive" src={} /> */}
+      <Script
+        strategy="beforeInteractive"
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAP_KEY}&libraries=places`}
+      />
 
       <div
         style={{ maxWidth: 480 }}
