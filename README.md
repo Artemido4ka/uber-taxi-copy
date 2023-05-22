@@ -42,7 +42,7 @@ Libraries and technologies, which were used:
 - [React](https://react.dev)
 - [Redux](https://redux.js.org)
 - [Goodle maps API](https://developers.google.com/maps)
-- [Icons by manshagraphics](https://freeicons.io/profile/433683) [on](https://freeicons.io)
+- [Icons by manshagraphics](https://freeicons.io/profile/433683) [on freeicons.io](https://freeicons.io)
 
 ## Installation
 
