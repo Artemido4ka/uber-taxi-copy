@@ -1,6 +1,6 @@
 import FromDestination from "../FromDestination/FromDestination";
 import Layout from "../layout/Layout";
-import Map from "../Map/Map";
+import Map from "../map/Map";
 import Options from "../Options/Options";
 import OrderButton from "../OrderButton/OrderButton";
 import ToDestination from "../ToDestination/ToDestination";
