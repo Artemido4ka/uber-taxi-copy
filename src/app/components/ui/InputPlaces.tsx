@@ -13,6 +13,8 @@ type TInputPlaces = {
   type: "from" | "to";
 };
 
+const SECONDS_IN_HOUR = 60;
+
 const InputPlaces: FC<TInputPlaces> = ({ cbSuccess, type }) => {
   const [address, setAddress] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -20,6 +22,13 @@ const InputPlaces: FC<TInputPlaces> = ({ cbSuccess, type }) => {
   const { travelTime } = useTypedSelector((state) => state.uber);
 
   const setFocus = () => inputRef?.current?.focus();
+
+  const calculateTime = (travelTime: number) => {
+    if (travelTime > SECONDS_IN_HOUR) {
+      return `(${Math.ceil(travelTime / SECONDS_IN_HOUR)} h.)`;
+    }
+    return "";
+  };
 
   const handleSelect = (address: string) => {
     geocodeByAddress(address)
@@ -43,7 +52,7 @@ const InputPlaces: FC<TInputPlaces> = ({ cbSuccess, type }) => {
       value={address}
       onChange={setAddress}
       onSelect={handleSelect}
-      onError={(err) => console.log("Error")}
+      onError={(err) => console.log(err)}
     >
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div
@@ -72,13 +81,15 @@ const InputPlaces: FC<TInputPlaces> = ({ cbSuccess, type }) => {
               {...getInputProps({
                 ref: inputRef,
                 placeholder: isFrom ? "Where from ?" : "Where to ?",
-                className: "outline-none w-full text-gray-800",
+                className: cn("outline-none w-full text-gray-800", {
+                  "w-3/5": type === "to",
+                }).toString(),
               })}
             />
             {!isFrom && (
               <div className="absolute right-5 text-sm text-400">
                 {travelTime
-                  ? `${travelTime} min. (${Math.ceil(travelTime / 60)} h.)`
+                  ? `${travelTime} min. ${calculateTime(travelTime)}`
                   : "-min"}
               </div>
             )}
@@ -97,10 +108,12 @@ const InputPlaces: FC<TInputPlaces> = ({ cbSuccess, type }) => {
             {suggestions.map((suggestion, idx) => (
               <div
                 {...getSuggestionItemProps(suggestion, {
-                  className: cn("cursor-pointer p-3", {
-                    "bg-gray": suggestion.active,
-                    "bg-white": !suggestion.active,
-                  }),
+                  className: cn(
+                    "cursor-pointer p-3 bg-white hover:bg-gray-100",
+                    {
+                      "bg-gray": suggestion.active,
+                    }
+                  ),
                 })}
                 key={`loc ${idx}`}
               >

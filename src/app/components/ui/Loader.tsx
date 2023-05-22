@@ -1,5 +1,5 @@
 import Image from "next/image";
-import preloaderImage from "../../assets/images/favicon.svg";
+import preloaderImage from "../../assets/images/taxi.png";
 
 const Loader = () => {
   return (
@@ -7,8 +7,9 @@ const Loader = () => {
       <Image
         src={preloaderImage.src}
         alt="preloader"
-        layout="fill"
         priority={true}
+        fill={true}
+        style={{ objectFit: "cover" }}
       />
     </div>
   );
