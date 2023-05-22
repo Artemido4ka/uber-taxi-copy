@@ -6,6 +6,8 @@ This small app illustrates the map with an ability of searching for addresses an
 
 ## The architecture of the app
 
+```
+/
 ├─ node_modules/          # packages installed by Yarn
 │
 ├─ src/
@@ -29,6 +31,7 @@ This small app illustrates the map with an ability of searching for addresses an
 ├─ tailwind.config        # Tailwind configuration
 ├─ tsconfig.json          # Specifies the root files and the compiler options
 └─ yarn.lock              # Versions of the dependencies specified in a package.json file
+```
 
 ## Tech
 
