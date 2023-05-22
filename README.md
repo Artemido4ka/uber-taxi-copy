@@ -1,34 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Uber Taxi Copy
 
-## Getting Started
+## Web application for taxi ordering
 
-First, run the development server:
+This small app illustrates the map with an ability of searching for addresses and creating the route from point A to point B.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## The architecture of the app
+
+├─ node_modules/          # packages installed by Yarn
+│
+├─ src/
+|  ├─ app/                # Root App layer. Here's global things and things that related exactly to the App
+|  |  ├─ assets/          # Static images folder
+|  |  |  ├─ images        # Static images
+|  |  |  ├─ options       # Static images for options
+|  |  ├─ components       # All components
+|  |  ├─ hooks            # Custom hooks
+|  |  ├─ static           # Static data
+|  |  ├─ store            # Redux root store
+|  ├─ pages               # Pages layer with the main page index.tsx
+|  ├─ globals.css         # Global styles
+├─ .env.local             # Enviromental variables
+├─ .eslintrc.json         # Linting preferences for JavasScript
+├─ .gitignore             # List of files and folders not tracked by Git
+├─ next.config            # Next.js configuration file
+├─ package.json           # Installed dependencies
+├─ postcss.config         # Compilation of CSS in Next.js
+├─ README.md              # This file
+├─ tailwind.config        # Tailwind configuration
+├─ tsconfig.json          # Specifies the root files and the compiler options
+└─ yarn.lock              # Versions of the dependencies specified in a package.json file
+
+## Tech
+
+Libraries and technologies, which were used:
+
+- [NextJS](https://nextjs.org)
+- [TypeScript](https://www.typescriptlang.org)
+- [React](https://react.dev)
+- [Redux](https://redux.js.org)
+- [Goodle maps API](https://developers.google.com/maps)
+- [Icons by manshagraphics](https://freeicons.io/profile/433683) [on](https://freeicons.io)
+
+## Installation
+
+```sh
+create .env.local file with your google API key
+yarn
+yarn start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+.env example:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+NEXT_PUBLIC_MAP_KEY = aBcde_Fghijk_lmNoP
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ ✨ Author: <korenko.artem9@gmail.com>
