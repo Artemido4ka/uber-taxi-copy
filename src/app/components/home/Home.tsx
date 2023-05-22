@@ -12,8 +12,8 @@ const Home = () => {
       <div className="absolute z-10 left-5 w-11/12 bottom-10">
         <FromDestination />
         <ToDestination />
-        <Options/>
-        <OrderButton/>
+        <Options />
+        <OrderButton />
       </div>
     </Layout>
   );
