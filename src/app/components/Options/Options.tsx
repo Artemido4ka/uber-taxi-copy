@@ -34,6 +34,13 @@ export const Options = () => {
               />
               <div className="text-sm -mt-1">{option.title}</div>
               <div className="text-md font-medium">$</div>
+
+              {travelTime
+                ? new Intl.NumberFormat("EN-US", {
+                    style: "currency",
+                    currency: "USD",
+                  }).format(travelTime * option.multiplier)
+                : "- $"}
             </div>
           </button>
         ))}
