@@ -6,6 +6,7 @@ import PlacesAutocomplete, {
 import { FiSearch } from "react-icons/fi";
 import cn from "classnames";
 import { Coords } from "google-map-react";
+import { useTypedSelector } from "@/app/hooks/useTypedSelector";
 
 type TInputPlaces = {
   cbSuccess: (address: string, location: Coords) => void;
@@ -15,6 +16,8 @@ type TInputPlaces = {
 const InputPlaces: FC<TInputPlaces> = ({ cbSuccess, type }) => {
   const [address, setAddress] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const { travelTime } = useTypedSelector((state) => state.uber);
 
   const setFocus = () => inputRef?.current?.focus();
 
@@ -73,7 +76,11 @@ const InputPlaces: FC<TInputPlaces> = ({ cbSuccess, type }) => {
               })}
             />
             {!isFrom && (
-              <div className="absolute right-5 text-sm text-400">-min.</div>
+              <div className="absolute right-5 text-sm text-400">
+                {travelTime
+                  ? `${travelTime} min. (${Math.ceil(travelTime / 60)} h.)`
+                  : "-min"}
+              </div>
             )}
           </div>
 
